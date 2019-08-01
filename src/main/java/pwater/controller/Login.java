@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import pwater.form.LoginForm;
 import pwater.model.Account;
 import pwater.service.AccountService;
@@ -27,6 +30,7 @@ public class Login {
         return "_layout";
     }
     
+
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
     public String checkLogin(
     	@RequestParam(required = false) String email,
@@ -34,7 +38,8 @@ public class Login {
     	@RequestParam(required = false) String remmeber,
 		@Valid LoginForm loginForm, 
 		BindingResult bindingResult,
-		Model model
+		Model model,
+        HttpServletRequest req
     ) {	
     	if (bindingResult.hasErrors()) {
             return "_layout";
@@ -48,7 +53,10 @@ public class Login {
 //        	System.out.println(acc.getPassword());
 //        	System.out.println(password);
 //        	System.out.println(acc.getGender());
-        	if(password.equals(acc.getPassword())) {
+            if(password.equals(acc.getPassword())) {
+                HttpSession session = req.getSession();
+                session.setAttribute("isLogin", true);
+                session.setAttribute("loggedEmail", acc.getEmail());
         		return "redirect:/home";
         	}else {
         		model.addAttribute("loginError","Your account's information is not found!");
