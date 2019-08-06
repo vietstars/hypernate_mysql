@@ -3,7 +3,7 @@
 *	[Hibernate required](#markdown-header-hibernate-required)
 *	[hibernate flow](#markdown-header-hibernate-flow)
 *	[App flow](#markdown-header-app-flow)
-
+*	[About entity](#markdown-header-about-entity)
 
 # Import application
 
@@ -35,3 +35,17 @@ git clone https://Lampart_Thai_Huy_Binh@bitbucket.org/Lampart_Thai_Huy_Binh/hype
 # App flow
 
 ![Screenshot](doc/hypernate_app.svg)
+
+# About entity
+
+1. 	Entity Types: [Transient - init, Persistent - normally, Detached - working]
+	-	If an object has its own database identity (primary key value) then it’s type is Entity Type.
+	-	An entity has its own lifecycle. It may exist independently of any other entity.
+	-	An object reference to an entity instance is persisted as a reference in the database (a foreign key value).
+	-	From the above picture, College is an Entity Type. It has it’s own database identity (It has primary key).
+
+2. 	Value Types:
+	-	If an object don’t have its own database identity (no primary key value) then it’s type is Value Type.
+	-	Value Type object belongs to an Entity Type Object.
+	-	It’s embedded in the owning entity and it represents the table column in the database.
+	-	The lifespan of a value type instance is bounded by the lifespan of the owning entity instance.
