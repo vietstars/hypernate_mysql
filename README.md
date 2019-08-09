@@ -26,7 +26,7 @@ git clone https://Lampart_Thai_Huy_Binh@bitbucket.org/Lampart_Thai_Huy_Binh/hype
 
 +		On build.gradle need __compile("org.springframework.boot:spring-boot-starter-data-jpa")__
 +		On application.properties need __spring.jpa.hibernate.ddl-auto=update__
-+		On root folder need mvnw,mvnw.cmd,pom.xml for declare hypsernate and Mysql database source
++		On root folder need mvnw,mvnw.cmd,pom.xml for declare hibernate and Mysql database source
 
 # hibernate flow
 
@@ -49,3 +49,7 @@ git clone https://Lampart_Thai_Huy_Binh@bitbucket.org/Lampart_Thai_Huy_Binh/hype
 	-	Value Type object belongs to an Entity Type Object.
 	-	It’s embedded in the owning entity and it represents the table column in the database.
 	-	The lifespan of a value type instance is bounded by the lifespan of the owning entity instance.
+Key word: 
+   Entity : 
+   	Entity Types [Transient,Persistent,Detached] 
+   	Value Types : [Basic Value Types,Composite Value Types,Collection Value Types]
